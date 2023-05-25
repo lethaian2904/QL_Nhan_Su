@@ -1,0 +1,57 @@
+<button (click)="addnhanviens()">Thêm</button>
+<table id="customers" style="border-collapse: collapse;">
+    <tr>
+      <th>
+        Mã nhân viên
+        <mat-icon style="cursor: pointer;" (click)="sortByCode('down')">
+          arrow_downward
+        </mat-icon>
+        <mat-icon style="cursor: pointer;" (click)="sortByCode('up')">
+          arrow_upward
+        </mat-icon>
+      </th>
+      <th>Họ tên</th>
+      <th>Ngày sinh</th>
+      <th>Quê Quán</th>
+      <th>Giới tính</th>
+      <th>Dân tộc</th>
+      <th>Số điện thoại</th>
+      <th>Mã chức vụ</th>
+      <th>Mã phòng ban</th>
+      <th>Mã chuyên ngành</th>
+      <th>Mã TDHV </th>
+      <th>CMND</th>
+    </tr>
+    <tr *ngFor="let nhanvien of nhanviens">
+      <td>
+        <mat-icon
+          style="cursor: pointer;"
+          title="Nhấn vào để xóa"
+          (click)="deletenhanvien(nhanvien.id)"
+        >
+          clear
+        </mat-icon>
+        &nbsp;
+        <mat-icon
+          style="cursor: pointer;"
+          title="Nhấn vào để soạn"
+          (click)="editnhanvien(nhanvien.id)"
+        >
+          create
+        </mat-icon>
+      </td>
+      <td>{{ nhanvien?.MaNhanVien }}</td>
+      <td>{{ nhanvien?.HoTen }}</td>
+      <td>{{ nhanvien?.NgaySinh }}</td>
+      <td>{{ nhanvien?.GioiTinh }}</td>
+      <td>{{ nhanvien?.MaChucVuNV}}</td>
+      <td>{{ nhanvien?.MaPhongBan}}</td>
+      <td align="center">
+        <img
+          *ngIf="nhanvien?.picture"
+          src="{{ nhanvien?.picture }}"
+          height="50"
+        />
+      </td>
+    </tr>
+  </table>

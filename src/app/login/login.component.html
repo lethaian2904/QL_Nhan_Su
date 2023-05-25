@@ -1,0 +1,24 @@
+
+<div class="container">
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="handleLogin(loginForm)">
+      <h2 class="login-title">Đăng nhập</h2>
+      <div class="login-group">
+          <input type="text" placeholder="Username" name="email" formControlName="username"/>
+          <div class="error" *ngIf="loginForm.touched || loginForm.dirty">
+            <ng-container *ngIf="loginForm.get('username')?.errors && loginForm.get('username')?.errors?.['required']">
+                Username is Mandatory
+            </ng-container>
+        </div>
+      </div>
+      <div class="login-group">
+          <input  type="password" placeholder="Password" name="psw" formControlName="password" />
+          <div class="error" *ngIf="loginForm.touched || loginForm.dirty">
+            <ng-container *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.errors?.['required']">
+                Password is Mandatory
+            </ng-container>
+        </div>
+      </div>
+      <button class="login-submit" type="submit">Login</button>
+      <p class="error" *ngIf="message">{{message}}</p>
+  </form>
+</div>

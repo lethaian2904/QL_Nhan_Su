@@ -1,0 +1,46 @@
+.container {   
+    height: 50vh;
+    display: flex;
+    padding: 10px;
+    margin: 5px;
+    
+   
+}
+
+.login-form {
+    border: 1px solid black;
+    border-radius: 7px;
+    width: max-content;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.login-group {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-image: linear-gradient(to right, #FF00CC, #3366FF);
+    border: none;
+    cursor: pointer;
+}
+
+.error {
+    font-size: 14px;
+    color: red;
+    margin-top: 5px;
+}

@@ -1,0 +1,16 @@
+.links {
+    margin: -7px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    background-color: #eee;
+}
+
+.links span {
+    padding: 20px 0;
+}
+
+.links a {
+    padding: 20px;
+    text-decoration: none;
+}
