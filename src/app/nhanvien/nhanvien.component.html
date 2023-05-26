@@ -1,4 +1,4 @@
-<button (click)="addnhanviens()">Thêm</button>
+<button (click)="addNhanvien()">Thêm</button>
 <table id="customers" style="border-collapse: collapse;">
     <tr>
       <th>
@@ -12,15 +12,10 @@
       </th>
       <th>Họ tên</th>
       <th>Ngày sinh</th>
-      <th>Quê Quán</th>
-      <th>Giới tính</th>
-      <th>Dân tộc</th>
-      <th>Số điện thoại</th>
-      <th>Mã chức vụ</th>
-      <th>Mã phòng ban</th>
-      <th>Mã chuyên ngành</th>
-      <th>Mã TDHV </th>
-      <th>CMND</th>
+      <th>GioiTinh</th>
+      <th>MaPhongBan</th>
+      <th>MaChucVuNV</th>
+      <th>HeSoLuong</th>
     </tr>
     <tr *ngFor="let nhanvien of nhanviens">
       <td>

@@ -28,11 +28,11 @@ export class NhanvienComponent {
     };
 
     private loadData() {
-      this.serverhttpservice.getNhanviens().subscribe(data) => {
+      this.serverhttpservice.getNhanviens().subscribe((data) => {
         console.log('getNhanviens', data);
         this.nhanviens = data;
-        this.user.
-      }
+        this.user.setTotalNhanviens(data.length);
+    });
     }
     public addNhanvien() {
       this.route.navigate(['nhanvien-form', 0]);
@@ -45,5 +45,13 @@ export class NhanvienComponent {
     }
     public editNhanVien(nhanvienID: any) {
       this.route.navigate(['nhanvien-form', nhanvienID]);
+    }
+
+    public sortByCode(dir: string) {
+      if (dir === 'up') {
+        this.nhanviens = _.orderBy(this.nhanviens, ['code'], ['desc']);
+      } else {
+        this.nhanviens = _.orderBy(this.nhanviens, ['code'], ['asc']);
+      }
     }
 }
