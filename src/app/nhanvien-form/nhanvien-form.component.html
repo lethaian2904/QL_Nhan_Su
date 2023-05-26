@@ -1,1 +1,69 @@
-<p>nhanvien-form works!</p>
+<div class="container">
+    <h1>Nhập thêm 1 sinh viên mới</h1>
+    <form [formGroup]="studentForm">
+      <mat-form-field class="form-header">
+        <mat-label>Mã sinh viên</mat-label>
+        <input matInput placeholder="" formControlName="code" require />
+      </mat-form-field>
+      <!--  
+      <span *ngIf="profileForm.controls.code.invalid" class="errorMessage">
+        * Cần phải nhập mã sinh viên
+      </span> -->
+      <mat-form-field class="form-header">
+        <mat-label>Giới tính</mat-label>
+        <input matInput placeholder="" formControlName="gender" require />
+      </mat-form-field>
+      <mat-form-field class="form-header">
+        <mat-label>Tên</mat-label>
+        <input matInput placeholder="" formControlName="firstName" require />
+      </mat-form-field>
+      <mat-form-field class="form-header">
+        <mat-label>Họ</mat-label>
+        <input matInput placeholder="" formControlName="lastName" require />
+      </mat-form-field>
+      <mat-form-field class="form-header">
+        <mat-label>Ngày tháng năm sinh</mat-label>
+        <input matInput placeholder="" formControlName="dob" require />
+      </mat-form-field>
+      <mat-form-field class="form-header">
+        <mat-label>Điện thư</mat-label>
+        <input matInput placeholder="" formControlName="email" require />
+      </mat-form-field>
+      <mat-form-field class="form-header">
+        <mat-label>Điện thoại</mat-label>
+        <input matInput placeholder="" formControlName="phone" require />
+      </mat-form-field>
+      <mat-form-field class="form-header">
+        <mat-label>Hình</mat-label>
+        <input matInput placeholder="" formControlName="picture" require />
+      </mat-form-field>
+      <br />
+      <button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="!studentForm.valid"
+        (click)="saveAndGotoList()"
+      >
+        Lưu và trở về danh sách
+      </button>
+      &nbsp;
+      <button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="!studentForm.valid"
+        (click)="save()"
+      >
+        Lưu <span *ngIf="id === 0">và nhập mới</span>
+      </button>
+      &nbsp;
+      <button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="!studentForm.valid"
+        (click)="randomStudent()"
+        *ngIf="id === 0"
+      >
+        Lấy ngẫu nhiên 1 người
+      </button>
+    </form>
+  </div>

@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { NhanViens } from '../model/nhanviens';
 import { UserService } from '../service/user.service';
 import { ServerHttpService } from '../service/server-http.service';
-import { Router } from 'express';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-nhanvien',
@@ -17,7 +16,7 @@ export class NhanvienComponent {
   constructor(
       private user: UserService,
       private serverhttpservice: ServerHttpService,
-      private router: Router, 
+      private router: Router,
       private route: ActivatedRoute
   ) {}
 
@@ -35,7 +34,7 @@ export class NhanvienComponent {
     });
     }
     public addNhanvien() {
-      this.route.navigate(['nhanvien-form', 0]);
+      this.router.navigate(['nhanvien-form', 0]);
     }
     public deleteNhanvien(nhanvienID: number) {
       this.serverhttpservice.deleteNhanVien(nhanvienID).subscribe((data) => {
@@ -44,7 +43,7 @@ export class NhanvienComponent {
       })
     }
     public editNhanVien(nhanvienID: any) {
-      this.route.navigate(['nhanvien-form', nhanvienID]);
+      this.router.navigate(['nhanvien-form', nhanvienID]);
     }
 
     public sortByCode(dir: string) {

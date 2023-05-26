@@ -13,7 +13,8 @@ export class ServerHttpService {
       'Context-Type': 'aplication/json',
     })
   }
-private REST_API_SERVER = 'http://localhost';
+private REST_API_SERVER = 'http://localhost:3000';
+  modifyNhanvien: any;
 
   constructor(private httpClient: HttpClient) { }
 
