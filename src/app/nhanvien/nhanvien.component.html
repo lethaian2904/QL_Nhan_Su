@@ -22,7 +22,7 @@
         <mat-icon
           style="cursor: pointer;"
           title="Nhấn vào để xóa"
-          (click)="deletenhanvien(nhanvien.id)"
+          (click)="deleteNhanvien(nhanvien.id)"
         >
           clear
         </mat-icon>
@@ -30,7 +30,7 @@
         <mat-icon
           style="cursor: pointer;"
           title="Nhấn vào để soạn"
-          (click)="editnhanvien(nhanvien.id)"
+          (click)="editNhanvien(nhanvien.id)"
         >
           create
         </mat-icon>
@@ -42,11 +42,6 @@
       <td>{{ nhanvien?.MaChucVuNV}}</td>
       <td>{{ nhanvien?.MaPhongBan}}</td>
       <td align="center">
-        <img
-          *ngIf="nhanvien?.picture"
-          src="{{ nhanvien?.picture }}"
-          height="50"
-        />
       </td>
     </tr>
   </table>

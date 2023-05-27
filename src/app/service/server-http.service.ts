@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, throwError } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { NhanViens } from '../model/nhanviens';
 
 
@@ -8,6 +8,7 @@ import { NhanViens } from '../model/nhanviens';
   providedIn: 'root'
 })
 export class ServerHttpService {
+  
   private httpOptions = {
     headers: new HttpHeaders({
       'Context-Type': 'aplication/json',
@@ -18,15 +19,22 @@ private REST_API_SERVER = 'http://localhost:3000';
 
   constructor(private httpClient: HttpClient) { }
 
-  public getNhanviens() {
+  public getNhanviens(): Observable<any> {
     const url = `${this.REST_API_SERVER}/nhanviens`;
     return this.httpClient
     .get<any>(url, this.httpOptions)
     .pipe(catchError(this.handleError))
   }
 
-  public getNhanvien(nhanvienID: number) {
+  public getNhanvien(nhanvienID: number): Observable<any> {
     const url = `${this.REST_API_SERVER}/nhanviens/` + nhanvienID;
+    return this.httpClient
+    .get<any>(url, this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
+  public getRamdomNhanvien(): void | Observable<any> {
+    const url = `http://randomuser.me/api/?results=1`;
     return this.httpClient
     .get<any>(url, this.httpOptions)
     .pipe(catchError(this.handleError));

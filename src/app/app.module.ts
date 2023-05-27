@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+
 
 import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -14,13 +11,26 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatInputModule } from '@angular/material/input';
+
+import { AppRoutingModule } from './app-routing.module';
 import { AppRoutesModule } from './app-routes.module';
+import { NhanvienComponent } from './nhanvien/nhanvien.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NhanvienFormComponent } from './nhanvien-form/nhanvien-form.component';
+
+import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent, 
     LoginComponent,
     HomeComponent,
+    NhanvienComponent,
+    NhanvienFormComponent
     
   ],
   imports: [

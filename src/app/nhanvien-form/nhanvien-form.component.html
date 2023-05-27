@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Nhập thêm 1 sinh viên mới</h1>
-    <form [formGroup]="studentForm">
+    <form [formGroup]="nhanvienForm">
       <mat-form-field class="form-header">
         <mat-label>Mã sinh viên</mat-label>
         <input matInput placeholder="" formControlName="code" require />
@@ -41,7 +41,7 @@
       <button
         type="submit"
         class="btn btn-success"
-        [disabled]="!studentForm.valid"
+        [disabled]="!nhanvienForm.valid"
         (click)="saveAndGotoList()"
       >
         Lưu và trở về danh sách
@@ -50,7 +50,7 @@
       <button
         type="submit"
         class="btn btn-success"
-        [disabled]="!studentForm.valid"
+        [disabled]="!nhanvienForm.valid"
         (click)="save()"
       >
         Lưu <span *ngIf="id === 0">và nhập mới</span>
@@ -59,8 +59,8 @@
       <button
         type="submit"
         class="btn btn-success"
-        [disabled]="!studentForm.valid"
-        (click)="randomStudent()"
+        [disabled]="!nhanvienForm.valid"
+        (click)="ramdomNhanvien()"
         *ngIf="id === 0"
       >
         Lấy ngẫu nhiên 1 người

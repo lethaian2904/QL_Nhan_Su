@@ -3,22 +3,27 @@ import { NhanViens } from '../model/nhanviens';
 import { UserService } from '../service/user.service';
 import { ServerHttpService } from '../service/server-http.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as _ from 'lodash';
+
 
 @Component({
   selector: 'app-nhanvien',
   templateUrl: './nhanvien.component.html',
   styleUrls: ['./nhanvien.component.css']
 })
+
 export class NhanvienComponent {
   public nhanviens: NhanViens[] = [];
-  
+  user: any;
 
+  
   constructor(
-      private user: UserService,
+      private usera: UserService,
       private serverhttpservice: ServerHttpService,
       private router: Router,
       private route: ActivatedRoute
   ) {}
+  
 
   ngOnInit(): void {
     console.log();
@@ -42,7 +47,7 @@ export class NhanvienComponent {
         this.loadData();
       })
     }
-    public editNhanVien(nhanvienID: any) {
+    public editNhanvien(nhanvienID: any) {
       this.router.navigate(['nhanvien-form', nhanvienID]);
     }
 

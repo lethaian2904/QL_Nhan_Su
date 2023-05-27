@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { NhanvienComponent } from './nhanvien/nhanvien.component';
 
 const appRouters: Routes= [
   {path : 'login', component: LoginComponent},
   {path : 'home', component: HomeComponent }
+  {path : 'nhanvien/:id', component: NhanvienComponent}
 ]
 
 

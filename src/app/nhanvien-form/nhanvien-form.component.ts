@@ -4,6 +4,8 @@ import { NhanViens } from '../model/nhanviens';
 import { UserService } from '../service/user.service';
 import { ServerHttpService } from '../service/server-http.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+
 
 
 @Component({
@@ -11,9 +13,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './nhanvien-form.component.html',
   styleUrls: ['./nhanvien-form.component.css']
 })
-export default class NhanvienFormComponent implements OnInit  {
+export class NhanvienFormComponent implements OnInit  {
 
-  
   public id = 0;
   public nhanvienForm = new FormGroup({
     MaNhanVien: new FormControl(''),
@@ -25,7 +26,7 @@ export default class NhanvienFormComponent implements OnInit  {
     HeSoLuong: new FormControl(''),
     increamentNhanVien: new FormControl(''),
   });
-  
+    
   constructor(
     private user:UserService,
     private serverHttp: ServerHttpService,
@@ -35,36 +36,37 @@ export default class NhanvienFormComponent implements OnInit  {
 
 
   ngOnInit(): void {
-    
-    this.id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
+    this.id = id ? +id : 0;
     if (this.id > 0) {
       this.loadData(this.id);
-    }
+    };
   }
   private loadData(id: number) {
-    this.serverHttp.getNhanviens(id).subscribe((data) => {
-      console.log('getStudent', data);
-      for (const controlName in this.nhanvienForm.controls) {
-        if (controlName) {
-          this.nhanvienForm.controls[controlName].setValue(data[controlName]);
-        }
+    this.serverHttp.getNhanviens().subscribe((data) => {
+      console.log('getNhanvien', data);
+      const controlName: keyof typeof this.nhanvienForm.controls = 'MaNhanVien';
+      for (; controlName; ) {
+        this.nhanvienForm.controls[controlName].setValue(data[controlName]);
       }
     });
   }
-  private createNewData() {
-    const newNhanVien :{ [key: string]: any } = {};
+  
+  
+  private createNewData(): NhanViens {
+    const newNhanVien: NhanViens = {} as NhanViens;
     for (const controlName of Object.keys(this.nhanvienForm.controls)) {
       if (controlName) {
         newNhanVien[controlName] = this.nhanvienForm.controls[controlName].value;
       }
     }
-    return newNhanVien as NhanViens;
+    return newNhanVien;
   }
   public saveAndGotoList() {
     if (this.id > 0) {
       this.serverHttp
         .modifyNhanvien(this.id, this.createNewData())
-        .subscribe((data) => {
+        .subscribe((data: any) => {
           this.router.navigate(['students']);
         });
     } else {
@@ -78,7 +80,7 @@ export default class NhanvienFormComponent implements OnInit  {
     if (this.id > 0) {
       this.serverHttp
         .modifyNhanvien(this.id, this.createNewData())
-        .subscribe((data) => {
+        .subscribe((data: any) => {
           //
         });
     } else {
@@ -89,6 +91,29 @@ export default class NhanvienFormComponent implements OnInit  {
     }
   }
 
+  public ramdomNhanvien() {
+    this.serverHttp.getRamdomNhanvien() as Observable<any>;
+    this.serverHttp.getNhanviens().subscribe((data) => {
+      console.log('getRamdomNhanvien', data);
+      if(data && data.results && data.results.length > 0) {
+        const nhanvien = data.results[0];
+        this.nhanvienForm.controls.MaNhanVien.setValue(
+          (nhanvien.id.HoTen || '') + '-' + (nhanvien.id.value || '')
+        );
+        this.nhanvienForm.controls.MaNhanVien.setValue(nhanvien.MaNhanVien);
+        this.nhanvienForm.controls.HoTen.setValue(nhanvien.HoTen);
+        this.nhanvienForm.controls.NgaySinh.setValue(nhanvien.NgaySinh);
+        this.nhanvienForm.controls.GioiTinh.setValue(nhanvien.GioiTinh);
+        this.nhanvienForm.controls.MaPhongBan.setValue(nhanvien.MaPhongBan);
+        this.nhanvienForm.controls.MaChucVu.setValue(nhanvien.MaChucVu);
+        this.nhanvienForm.controls.HeSoLuong.setValue(nhanvien.HeSoLuong);
+      }
+    })
+  }
   
+}
+
+function subscribe(arg0: (data: any) => void) {
+  throw new Error('Function not implemented.');
 }
 
