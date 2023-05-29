@@ -24,7 +24,7 @@ export class NhanvienFormComponent implements OnInit  {
     MaChucVu: new FormControl(''),
     MaPhongBan: new FormControl(''),
     HeSoLuong: new FormControl(''),
-    increamentNhanVien: new FormControl(''),
+    // increamentNhanVien: new FormControl(''),
   });
     
   constructor(
@@ -55,23 +55,53 @@ export class NhanvienFormComponent implements OnInit  {
   
   private createNewData(): NhanViens {
     const newNhanVien: NhanViens = {} as NhanViens;
-    for (const controlName of Object.keys(this.nhanvienForm.controls)) {
-      if (controlName) {
-        newNhanVien[controlName] = this.nhanvienForm.controls[controlName].value;
+    // for (const controlName of (Object.keys(this.nhanvienForm.controls) as any)) {
+    //   if (controlName) {
+      if(this.nhanvienForm.controls.HoTen.value)
+      {
+        newNhanVien.HoTen = this.nhanvienForm.controls.HoTen.value;
       }
-    }
-    return newNhanVien;
+
+      if(this.nhanvienForm.controls.GioiTinh.value)
+      {
+        newNhanVien.GioiTinh = this.nhanvienForm.controls.GioiTinh.value;
+      }
+
+      if(this.nhanvienForm.controls.NgaySinh.value)
+      {
+        newNhanVien.NgaySinh = this.nhanvienForm.controls.NgaySinh.value;
+      }
+
+      if(this.nhanvienForm.controls.MaPhongBan.value)
+      {
+        newNhanVien.MaPhongBan = this.nhanvienForm.controls.MaPhongBan.value;
+      }
+
+      if(this.nhanvienForm.controls.MaChucVu.value)
+      {
+        newNhanVien.MaChucVuNV = this.nhanvienForm.controls.MaChucVu.value;
+      }
+      if(this.nhanvienForm.controls.HeSoLuong.value)
+      {
+        newNhanVien.HeSoLuong = this.nhanvienForm.controls.HeSoLuong.value;
+      } 
+
+        console.log(newNhanVien);
+
+    //   }
+    // }
+    return newNhanVien as NhanViens;
   }
   public saveAndGotoList() {
     if (this.id > 0) {
       this.serverHttp
         .modifyNhanvien(this.id, this.createNewData())
         .subscribe((data: any) => {
-          this.router.navigate(['students']);
+          this.router.navigate(['nhanviens']);
         });
     } else {
       this.serverHttp.addNhanvien(this.createNewData()).subscribe((data) => {
-        this.router.navigate(['students']);
+        this.router.navigate(['nhanviens']);
       });
     }
   }

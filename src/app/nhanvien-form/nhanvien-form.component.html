@@ -2,8 +2,8 @@
     <h1>Nhập thêm 1 sinh viên mới</h1>
     <form [formGroup]="nhanvienForm">
       <mat-form-field class="form-header">
-        <mat-label>Mã sinh viên</mat-label>
-        <input matInput placeholder="" formControlName="code" require />
+        <mat-label>Mã nhân viên</mat-label>
+        <input matInput placeholder="" formControlName="MaNhanVien" require />
       </mat-form-field>
       <!--  
       <span *ngIf="profileForm.controls.code.invalid" class="errorMessage">
@@ -11,31 +11,31 @@
       </span> -->
       <mat-form-field class="form-header">
         <mat-label>Giới tính</mat-label>
-        <input matInput placeholder="" formControlName="gender" require />
+        <input matInput placeholder="" formControlName="GioiTinh" require />
       </mat-form-field>
       <mat-form-field class="form-header">
         <mat-label>Tên</mat-label>
-        <input matInput placeholder="" formControlName="firstName" require />
+        <input matInput placeholder="" formControlName="HoTen" require />
       </mat-form-field>
-      <mat-form-field class="form-header">
+      <!-- <mat-form-field class="form-header">
         <mat-label>Họ</mat-label>
         <input matInput placeholder="" formControlName="lastName" require />
-      </mat-form-field>
+      </mat-form-field> -->
       <mat-form-field class="form-header">
         <mat-label>Ngày tháng năm sinh</mat-label>
-        <input matInput placeholder="" formControlName="dob" require />
+        <input matInput placeholder="" formControlName="NgaySinh" require />
       </mat-form-field>
       <mat-form-field class="form-header">
-        <mat-label>Điện thư</mat-label>
-        <input matInput placeholder="" formControlName="email" require />
+        <mat-label>Mã phòng</mat-label>
+        <input matInput placeholder="" formControlName="MaPhongBan" require />
       </mat-form-field>
       <mat-form-field class="form-header">
-        <mat-label>Điện thoại</mat-label>
-        <input matInput placeholder="" formControlName="phone" require />
+        <mat-label>Mã chức vụ</mat-label>
+        <input matInput placeholder="" formControlName="MaChucVu" require />
       </mat-form-field>
       <mat-form-field class="form-header">
-        <mat-label>Hình</mat-label>
-        <input matInput placeholder="" formControlName="picture" require />
+        <mat-label>Hệ số lương</mat-label>
+        <input matInput placeholder="" formControlName="HeSoLuong" require />
       </mat-form-field>
       <br />
       <button
@@ -46,7 +46,7 @@
       >
         Lưu và trở về danh sách
       </button>
-      &nbsp;
+      <!-- &nbsp;
       <button
         type="submit"
         class="btn btn-success"
@@ -55,8 +55,8 @@
       >
         Lưu <span *ngIf="id === 0">và nhập mới</span>
       </button>
-      &nbsp;
-      <button
+      &nbsp; -->
+      <!-- <button
         type="submit"
         class="btn btn-success"
         [disabled]="!nhanvienForm.valid"
@@ -64,6 +64,6 @@
         *ngIf="id === 0"
       >
         Lấy ngẫu nhiên 1 người
-      </button>
+      </button> -->
     </form>
   </div>

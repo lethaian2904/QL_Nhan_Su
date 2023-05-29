@@ -26,9 +26,13 @@ export class LoginComponent implements OnInit {
   handleLogin(form: FormGroup) {
     if (form.valid) {
       const { username, password } = form.value;
+
+
       this.userService.login().subscribe((userList: User[]) => {
         const user = userList.find((user: User) => {
+          console.log(user);
           if (username === user.username && password === user.password) {
+            
             this.router.navigateByUrl('home');
           }
         })

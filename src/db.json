@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "thuhong",
+      "password": "123456"
+    },
+    {
+      "username": "ttth",
+      "password": "123",
+      "id": 3
+    },
+    {
+      "username": "thaian",
+      "password": "123",
+      "id": 4
+    },
+    {
+      "username": "ttah",
+      "password": "1234",
+      "id": 5
+    },
+    {
+      "username": "nva",
+      "password": "123",
+      "id": 6
+    }
+  ],
+  "nhanviens": [
+    {
+      "GioiTinh": "nam",
+      "id": 1
+    },
+    {
+      "GioiTinh": "Nam",
+      "id": 2
+    },
+    {
+      "HoTen": "Quốc em",
+      "GioiTinh": "Nam",
+      "id": 3
+    }
+  ]
+}
