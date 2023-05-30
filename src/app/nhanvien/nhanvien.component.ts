@@ -44,12 +44,12 @@ export class NhanvienComponent {
     }
     public deleteNhanvien(nhanvienID: number) {
       this.serverhttpservice.deleteNhanVien(nhanvienID).subscribe((data) => {
-        console.log('delete', data);
+        console.log('home', data);
         this.loadData();
       })
     }
-    public editNhanvien(nhanvienID: any) {
-      this.router.navigate(['add', nhanvienID]);
+    public editNhanvien(ID: any) {
+      this.router.navigate(['home', ID]);
     }
 
     // public sortByCode(dir: string) {

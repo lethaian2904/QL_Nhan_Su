@@ -5,10 +5,6 @@
         <mat-label>Mã nhân viên</mat-label>
         <input matInput placeholder="" formControlName="MaNhanVien" require />
       </mat-form-field>
-      <!--  
-      <span *ngIf="profileForm.controls.code.invalid" class="errorMessage">
-        * Cần phải nhập mã sinh viên
-      </span> -->
       <mat-form-field class="form-header">
         <mat-label>Giới tính</mat-label>
         <input matInput placeholder="" formControlName="GioiTinh" require />
@@ -17,10 +13,6 @@
         <mat-label>Tên</mat-label>
         <input matInput placeholder="" formControlName="HoTen" require />
       </mat-form-field>
-      <!-- <mat-form-field class="form-header">
-        <mat-label>Họ</mat-label>
-        <input matInput placeholder="" formControlName="lastName" require />
-      </mat-form-field> -->
       <mat-form-field class="form-header">
         <mat-label>Ngày tháng năm sinh</mat-label>
         <input matInput placeholder="" formControlName="NgaySinh" require />
@@ -46,7 +38,7 @@
       >
         Lưu và trở về danh sách
       </button>
-      <!-- &nbsp;
+      &nbsp;
       <button
         type="submit"
         class="btn btn-success"
@@ -55,15 +47,5 @@
       >
         Lưu <span *ngIf="id === 0">và nhập mới</span>
       </button>
-      &nbsp; -->
-      <!-- <button
-        type="submit"
-        class="btn btn-success"
-        [disabled]="!nhanvienForm.valid"
-        (click)="ramdomNhanvien()"
-        *ngIf="id === 0"
-      >
-        Lấy ngẫu nhiên 1 người
-      </button> -->
     </form>
   </div>

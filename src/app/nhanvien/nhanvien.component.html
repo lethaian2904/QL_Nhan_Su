@@ -4,9 +4,7 @@
 <table id="customers" style="border-collapse: collapse;">
     <tr>
       <th>Thao tác</th>
-      <th>
-        Mã nhân viên
-      </th>
+      <th>Mã nhân viên</th>
       <th>Họ tên</th>
       <th>Ngày sinh</th>
       <th>GioiTinh</th>
@@ -19,7 +17,7 @@
         <mat-icon
           style="cursor: pointer;"
           title="Nhấn vào để xóa"
-          (click)="deleteNhanvien(nhanvien.id)"
+          (click)="deleteNhanvien(nhanvien.ID)"
         >
           clear
         </mat-icon>
@@ -27,12 +25,12 @@
         <mat-icon
           style="cursor: pointer;"
           title="Nhấn vào để soạn"
-          (click)="editNhanvien(nhanvien.id)"
+          (click)="editNhanvien(nhanvien.ID)"
         >
           create
         </mat-icon>
       </td>
-      <td>{{ nhanvien?.MaNhanVien }}</td>
+      <td>{{ nhanvien?.ID }}</td>
       <td>{{ nhanvien?.HoTen }}</td>
       <td>{{ nhanvien?.NgaySinh }}</td>
       <td>{{ nhanvien?.GioiTinh }}</td>

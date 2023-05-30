@@ -17,7 +17,7 @@ export class NhanvienFormComponent implements OnInit  {
 
   public id = 0;
   public nhanvienForm = new FormGroup({
-    MaNhanVien: new FormControl(''),
+    ID: new FormControl(''),
     HoTen: new FormControl(''),
     NgaySinh: new FormControl(''),
     GioiTinh: new FormControl(''),
@@ -45,7 +45,7 @@ export class NhanvienFormComponent implements OnInit  {
   private loadData(id: number) {
     this.serverHttp.getNhanviens().subscribe((data) => {
       console.log('getNhanvien', data);
-      const controlName: keyof typeof this.nhanvienForm.controls = 'MaNhanVien';
+      const controlName: keyof typeof this.nhanvienForm.controls = 'ID';
       for (; controlName; ) {
         this.nhanvienForm.controls[controlName].setValue(data[controlName]);
       }
@@ -55,46 +55,39 @@ export class NhanvienFormComponent implements OnInit  {
   
   private createNewData(): NhanViens {
     const newNhanVien: NhanViens = {} as NhanViens;
-    // for (const controlName of (Object.keys(this.nhanvienForm.controls) as any)) {
-    //   if (controlName) {
-      if(this.nhanvienForm.controls.MaNhanVien.value)
+    {
+      if(this.nhanvienForm.controls.ID.value)
       {
-        newNhanVien.MaNhanVien = this.nhanvienForm.controls.MaNhanVien.value;
+       newNhanVien.ID = Number(this.nhanvienForm.controls.ID.value);
       }
-
       if(this.nhanvienForm.controls.HoTen.value)
       {
         newNhanVien.HoTen = this.nhanvienForm.controls.HoTen.value;
       }
-
       if(this.nhanvienForm.controls.GioiTinh.value)
       {
         newNhanVien.GioiTinh = this.nhanvienForm.controls.GioiTinh.value;
       }
-
       if(this.nhanvienForm.controls.NgaySinh.value)
       {
-        newNhanVien.NgaySinh = this.nhanvienForm.controls.NgaySinh.value;
+        const ngaySinh = new Date(this.nhanvienForm.controls.NgaySinh.value);
+        newNhanVien.NgaySinh = ngaySinh;
       }
-
       if(this.nhanvienForm.controls.MaPhongBan.value)
       {
         newNhanVien.MaPhongBan = this.nhanvienForm.controls.MaPhongBan.value;
       }
-
       if(this.nhanvienForm.controls.MaChucVu.value)
       {
         newNhanVien.MaChucVuNV = this.nhanvienForm.controls.MaChucVu.value;
       }
       if(this.nhanvienForm.controls.HeSoLuong.value)
       {
-        newNhanVien.HeSoLuong = this.nhanvienForm.controls.HeSoLuong.value;
+        newNhanVien.HeSoLuong = Number(this.nhanvienForm.controls.HeSoLuong.value);
       } 
-
+    }
         console.log(newNhanVien);
 
-    //   }
-    // }
     return newNhanVien as NhanViens;
   }
   public saveAndGotoList() {
@@ -102,11 +95,11 @@ export class NhanvienFormComponent implements OnInit  {
       this.serverHttp
         .modifyNhanvien(this.id, this.createNewData())
         .subscribe((data: any) => {
-          this.router.navigate(['nhanviens']);
+          this.router.navigate(['home']);
         });
     } else {
       this.serverHttp.addNhanvien(this.createNewData()).subscribe((data) => {
-        this.router.navigate(['nhanviens']);
+        this.router.navigate(['home']);
       });
     }
   }
