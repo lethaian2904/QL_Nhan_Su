@@ -28,17 +28,14 @@
   ],
   "nhanviens": [
     {
-      "GioiTinh": "nam",
-      "id": 1
-    },
-    {
-      "GioiTinh": "Nam",
-      "id": 2
-    },
-    {
-      "HoTen": "Quốc em",
-      "GioiTinh": "Nam",
-      "id": 3
+      "MaNhanVien": "123",
+      "HoTen": "tủn",
+      "GioiTinh": "nữ",
+      "NgaySinh": "11-1-2002",
+      "MaPhongBan": "a101",
+      "MaChucVuNV": "quỳ",
+      "HeSoLuong": "162500",
+      "id": 5
     }
   ]
 }

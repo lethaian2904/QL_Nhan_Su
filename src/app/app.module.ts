@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatInputModule } from '@angular/material/input';
 
-import { AppRoutingModule } from './app-routing.module';
+// import { AppRoutingModule } from './app-routing.module';
 import { AppRoutesModule } from './app-routes.module';
 import { NhanvienComponent } from './nhanvien/nhanvien.component';
 import { HttpClientModule } from '@angular/common/http';

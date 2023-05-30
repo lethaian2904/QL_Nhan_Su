@@ -57,6 +57,11 @@ export class NhanvienFormComponent implements OnInit  {
     const newNhanVien: NhanViens = {} as NhanViens;
     // for (const controlName of (Object.keys(this.nhanvienForm.controls) as any)) {
     //   if (controlName) {
+      if(this.nhanvienForm.controls.MaNhanVien.value)
+      {
+        newNhanVien.MaNhanVien = this.nhanvienForm.controls.MaNhanVien.value;
+      }
+
       if(this.nhanvienForm.controls.HoTen.value)
       {
         newNhanVien.HoTen = this.nhanvienForm.controls.HoTen.value;
@@ -93,7 +98,7 @@ export class NhanvienFormComponent implements OnInit  {
     return newNhanVien as NhanViens;
   }
   public saveAndGotoList() {
-    if (this.id > 0) {
+    if (this.id > 1) {
       this.serverHttp
         .modifyNhanvien(this.id, this.createNewData())
         .subscribe((data: any) => {
@@ -121,29 +126,31 @@ export class NhanvienFormComponent implements OnInit  {
     }
   }
 
-  public ramdomNhanvien() {
-    this.serverHttp.getRamdomNhanvien() as Observable<any>;
-    this.serverHttp.getNhanviens().subscribe((data) => {
-      console.log('getRamdomNhanvien', data);
-      if(data && data.results && data.results.length > 0) {
-        const nhanvien = data.results[0];
-        this.nhanvienForm.controls.MaNhanVien.setValue(
-          (nhanvien.id.HoTen || '') + '-' + (nhanvien.id.value || '')
-        );
-        this.nhanvienForm.controls.MaNhanVien.setValue(nhanvien.MaNhanVien);
-        this.nhanvienForm.controls.HoTen.setValue(nhanvien.HoTen);
-        this.nhanvienForm.controls.NgaySinh.setValue(nhanvien.NgaySinh);
-        this.nhanvienForm.controls.GioiTinh.setValue(nhanvien.GioiTinh);
-        this.nhanvienForm.controls.MaPhongBan.setValue(nhanvien.MaPhongBan);
-        this.nhanvienForm.controls.MaChucVu.setValue(nhanvien.MaChucVu);
-        this.nhanvienForm.controls.HeSoLuong.setValue(nhanvien.HeSoLuong);
-      }
-    })
-  }
+  // public ramdomNhanvien() {
+  //   this.serverHttp.getRamdomNhanvien() as Observable<any>;
+  //   this.serverHttp.getNhanviens().subscribe((data) => {
+  //     console.log('getRamdomNhanvien', data);
+  //     if(data && data.results && data.results.length > 0) {
+  //       const nhanvien = data.results[0];
+  //       this.nhanvienForm.controls.MaNhanVien.setValue(
+  //         (nhanvien.id.HoTen || '') + '-' + (nhanvien.id.value || '')
+  //       );
+  //       this.nhanvienForm.controls.MaNhanVien.setValue(nhanvien.MaNhanVien);
+  //       this.nhanvienForm.controls.HoTen.setValue(nhanvien.HoTen);
+  //       this.nhanvienForm.controls.NgaySinh.setValue(nhanvien.NgaySinh);
+  //       this.nhanvienForm.controls.GioiTinh.setValue(nhanvien.GioiTinh);
+  //       this.nhanvienForm.controls.MaPhongBan.setValue(nhanvien.MaPhongBan);
+  //       this.nhanvienForm.controls.MaChucVu.setValue(nhanvien.MaChucVu);
+  //       this.nhanvienForm.controls.HeSoLuong.setValue(nhanvien.HeSoLuong);
+  //     }
+  //   })
+  // }
   
 }
 
 function subscribe(arg0: (data: any) => void) {
   throw new Error('Function not implemented.');
+
+
 }
 

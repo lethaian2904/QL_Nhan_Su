@@ -1,14 +1,11 @@
-<button (click)="addNhanvien()">Thêm</button>
+<button mat-raised-button color="primary" (click)="addNhanvien()">Thêm nhân viên
+</button>
+
 <table id="customers" style="border-collapse: collapse;">
     <tr>
+      <th>Thao tác</th>
       <th>
         Mã nhân viên
-        <mat-icon style="cursor: pointer;" (click)="sortByCode('down')">
-          arrow_downward
-        </mat-icon>
-        <mat-icon style="cursor: pointer;" (click)="sortByCode('up')">
-          arrow_upward
-        </mat-icon>
       </th>
       <th>Họ tên</th>
       <th>Ngày sinh</th>
@@ -43,5 +40,11 @@
       <td>{{ nhanvien?.MaPhongBan}}</td>
       <td align="center">
       </td>
+      <!-- <mat-icon style="cursor: pointer;" (click)="sortByCode('down')">
+        arrow_downward
+      </mat-icon>
+      <mat-icon style="cursor: pointer;" (click)="sortByCode('up')">
+        arrow_upward
+      </mat-icon> -->
     </tr>
   </table>

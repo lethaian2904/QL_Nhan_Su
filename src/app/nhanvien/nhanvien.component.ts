@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NhanViens } from '../model/nhanviens';
 import { UserService } from '../service/user.service';
 import { ServerHttpService } from '../service/server-http.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
+import { NhanvienFormComponent } from '../nhanvien-form/nhanvien-form.component';
 import * as _ from 'lodash';
 
 
@@ -14,11 +15,11 @@ import * as _ from 'lodash';
 
 export class NhanvienComponent {
   public nhanviens: NhanViens[] = [];
-  user: any;
+  // user: any;
 
   
   constructor(
-      private usera: UserService,
+      private user: UserService,
       private serverhttpservice: ServerHttpService,
       private router: Router,
       private route: ActivatedRoute
@@ -38,24 +39,25 @@ export class NhanvienComponent {
         this.user.setTotalNhanviens(data.length);
     });
     }
-    public addNhanvien() {
-      this.router.navigate(['nhanvien-form', 0]);
+    public addNhanvien(){
+      this.router.navigate(['add']);
     }
     public deleteNhanvien(nhanvienID: number) {
       this.serverhttpservice.deleteNhanVien(nhanvienID).subscribe((data) => {
-        console.log('deleta', data);
+        console.log('delete', data);
         this.loadData();
       })
     }
     public editNhanvien(nhanvienID: any) {
-      this.router.navigate(['nhanvien-form', nhanvienID]);
+      this.router.navigate(['add', nhanvienID]);
     }
 
-    public sortByCode(dir: string) {
-      if (dir === 'up') {
-        this.nhanviens = _.orderBy(this.nhanviens, ['code'], ['desc']);
-      } else {
-        this.nhanviens = _.orderBy(this.nhanviens, ['code'], ['asc']);
-      }
-    }
+    // public sortByCode(dir: string) {
+    //   if (dir === 'up') {
+    //     this.nhanviens = _.orderBy(this.nhanviens, ['code'], ['desc']);
+    //   } else {
+    //     this.nhanviens = _.orderBy(this.nhanviens, ['code'], ['asc']);
+    //   }
+    // }
+    
 }
