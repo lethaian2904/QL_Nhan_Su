@@ -4,13 +4,17 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NhanvienComponent } from './nhanvien/nhanvien.component';
 import { NhanvienFormComponent } from './nhanvien-form/nhanvien-form.component';
+import { AuthGuard } from './AuthGuard/auth.guard';
+
 
 const appRouters: Routes= [
   {path : '', component:LoginComponent},
   {path : 'login', component: LoginComponent},
-  {path : 'home', component: NhanvienComponent },
-  {path : 'nhanvien/:id', component: NhanvienComponent},
-  {path : 'add', component: NhanvienFormComponent}
+  {path : 'home', component: NhanvienComponent, canActivate:[AuthGuard] },
+  {path : 'nhanvien/:ID', component: NhanvienComponent,},
+  {path : 'add/:ID', component: NhanvienFormComponent, },
+  {path : 'add', component: NhanvienFormComponent },
+  {path: '',redirectTo:'login',pathMatch:'full'},
 
 ]
 

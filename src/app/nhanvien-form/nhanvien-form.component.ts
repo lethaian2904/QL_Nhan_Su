@@ -5,8 +5,9 @@ import { UserService } from '../service/user.service';
 import { ServerHttpService } from '../service/server-http.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { trigger,state,style,transition,animate } from '@angular/animations';
 
 @Component({
   selector: 'app-nhanvien-form',
@@ -15,7 +16,8 @@ import { Observable } from 'rxjs';
 })
 export class NhanvienFormComponent implements OnInit  {
 
-  public id = 0;
+  public gioitinh = ['Name','nữ','Khác'];
+  public id =0;
   public nhanvienForm = new FormGroup({
     ID: new FormControl(''),
     HoTen: new FormControl(''),
@@ -43,11 +45,15 @@ export class NhanvienFormComponent implements OnInit  {
     };
   }
   private loadData(id: number) {
-    this.serverHttp.getNhanviens().subscribe((data) => {
+    console.log('load data',id);
+    this.serverHttp.getNhanvien(id).subscribe((data) => {
       console.log('getNhanvien', data);
       const controlName: keyof typeof this.nhanvienForm.controls = 'ID';
-      for (; controlName; ) {
+      for (;controlName; ) {
+        if(controlName){
         this.nhanvienForm.controls[controlName].setValue(data[controlName]);
+        console.log(data[controlName])
+        }
       }
     });
   }
@@ -55,43 +61,51 @@ export class NhanvienFormComponent implements OnInit  {
   
   private createNewData(): NhanViens {
     const newNhanVien: NhanViens = {} as NhanViens;
-    {
+    // for (const controlName of (Object.keys(this.nhanvienForm.controls) as any)) {
+    //   if (controlName) {
+      
       if(this.nhanvienForm.controls.ID.value)
       {
-       newNhanVien.ID = Number(this.nhanvienForm.controls.ID.value);
+        newNhanVien.ID= Number(this.nhanvienForm.controls.ID.value)
       }
       if(this.nhanvienForm.controls.HoTen.value)
       {
         newNhanVien.HoTen = this.nhanvienForm.controls.HoTen.value;
       }
+
       if(this.nhanvienForm.controls.GioiTinh.value)
       {
         newNhanVien.GioiTinh = this.nhanvienForm.controls.GioiTinh.value;
       }
+
       if(this.nhanvienForm.controls.NgaySinh.value)
       {
-        const ngaySinh = new Date(this.nhanvienForm.controls.NgaySinh.value);
-        newNhanVien.NgaySinh = ngaySinh;
+        const ngaySinh=new Date(this.nhanvienForm.controls.NgaySinh.value);
+        newNhanVien.NgaySinh=ngaySinh;
       }
+
       if(this.nhanvienForm.controls.MaPhongBan.value)
       {
         newNhanVien.MaPhongBan = this.nhanvienForm.controls.MaPhongBan.value;
       }
+
       if(this.nhanvienForm.controls.MaChucVu.value)
       {
         newNhanVien.MaChucVuNV = this.nhanvienForm.controls.MaChucVu.value;
       }
       if(this.nhanvienForm.controls.HeSoLuong.value)
       {
-        newNhanVien.HeSoLuong = Number(this.nhanvienForm.controls.HeSoLuong.value);
+        newNhanVien.HeSoLuong=Number(this.nhanvienForm.controls.HeSoLuong.value);
       } 
-    }
+
         console.log(newNhanVien);
 
+    //   }
+    // }
     return newNhanVien as NhanViens;
   }
   public saveAndGotoList() {
-    if (this.id > 1) {
+    if (this.id > 0) {
       this.serverHttp
         .modifyNhanvien(this.id, this.createNewData())
         .subscribe((data: any) => {
@@ -125,10 +139,10 @@ export class NhanvienFormComponent implements OnInit  {
   //     console.log('getRamdomNhanvien', data);
   //     if(data && data.results && data.results.length > 0) {
   //       const nhanvien = data.results[0];
-  //       this.nhanvienForm.controls.MaNhanVien.setValue(
+  //       this.nhanvienForm.controls.ID.setValue(
   //         (nhanvien.id.HoTen || '') + '-' + (nhanvien.id.value || '')
   //       );
-  //       this.nhanvienForm.controls.MaNhanVien.setValue(nhanvien.MaNhanVien);
+  //       this.nhanvienForm.controls.ID.setValue(nhanvien.MaNhanVien);
   //       this.nhanvienForm.controls.HoTen.setValue(nhanvien.HoTen);
   //       this.nhanvienForm.controls.NgaySinh.setValue(nhanvien.NgaySinh);
   //       this.nhanvienForm.controls.GioiTinh.setValue(nhanvien.GioiTinh);
@@ -139,11 +153,10 @@ export class NhanvienFormComponent implements OnInit  {
   //   })
   // }
   
+  
 }
 
 function subscribe(arg0: (data: any) => void) {
   throw new Error('Function not implemented.');
-
-
 }
 

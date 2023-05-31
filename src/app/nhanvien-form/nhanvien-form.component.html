@@ -2,20 +2,20 @@
     <h1>Nhập thêm 1 sinh viên mới</h1>
     <form [formGroup]="nhanvienForm">
       <mat-form-field class="form-header">
-        <mat-label>Mã nhân viên</mat-label>
-        <input matInput placeholder="" formControlName="MaNhanVien" require />
+        <mat-label>ID</mat-label>
+        <input matInput placeholder="" formControlName="ID" require />
+      </mat-form-field>
+      <mat-form-field class="form-header">
+        <mat-label>Họ tên</mat-label>
+        <input matInput placeholder="" formControlName="HoTen" require />
       </mat-form-field>
       <mat-form-field class="form-header">
         <mat-label>Giới tính</mat-label>
         <input matInput placeholder="" formControlName="GioiTinh" require />
       </mat-form-field>
       <mat-form-field class="form-header">
-        <mat-label>Tên</mat-label>
-        <input matInput placeholder="" formControlName="HoTen" require />
-      </mat-form-field>
-      <mat-form-field class="form-header">
         <mat-label>Ngày tháng năm sinh</mat-label>
-        <input matInput placeholder="" formControlName="NgaySinh" require />
+        <input   matInput placeholder="" formControlName="NgaySinh" require />
       </mat-form-field>
       <mat-form-field class="form-header">
         <mat-label>Mã phòng</mat-label>

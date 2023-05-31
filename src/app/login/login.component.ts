@@ -39,10 +39,15 @@ export class LoginComponent implements OnInit {
         if (!user) {
           this.loginForm.reset();
           this.message = 'Username or password incorrect';
+          localStorage.setItem('isLoggedIn','true');
         }
       })
     } else {
       this.loginForm.markAllAsTouched();
     }
-  }
+    localStorage.setItem('isLoggedIn','true');
+    
+    
+  
+}
 }

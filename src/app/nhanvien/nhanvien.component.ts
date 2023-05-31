@@ -40,7 +40,7 @@ export class NhanvienComponent {
     });
     }
     public addNhanvien(){
-      this.router.navigate(['add']);
+      this.router.navigate(['add', 0]);
     }
     public deleteNhanvien(nhanvienID: number) {
       this.serverhttpservice.deleteNhanVien(nhanvienID).subscribe((data) => {
@@ -49,7 +49,7 @@ export class NhanvienComponent {
       })
     }
     public editNhanvien(ID: any) {
-      this.router.navigate(['home', ID]);
+      this.router.navigate(['add', ID]);
     }
 
     // public sortByCode(dir: string) {
