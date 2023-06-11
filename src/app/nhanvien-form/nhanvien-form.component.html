@@ -1,35 +1,23 @@
 <div class="container">
-    <h1>Nhập thêm 1 sinh viên mới</h1>
-    <form [formGroup]="nhanvienForm">
-      <mat-form-field class="form-header">
-        <mat-label>ID</mat-label>
-        <input matInput placeholder="" formControlName="ID" require />
-      </mat-form-field>
-      <mat-form-field class="form-header">
-        <mat-label>Họ tên</mat-label>
-        <input matInput placeholder="" formControlName="HoTen" require />
-      </mat-form-field>
-      <mat-form-field class="form-header">
-        <mat-label>Giới tính</mat-label>
-        <input matInput placeholder="" formControlName="GioiTinh" require />
-      </mat-form-field>
-      <mat-form-field class="form-header">
-        <mat-label>Ngày tháng năm sinh</mat-label>
-        <input   matInput placeholder="" formControlName="NgaySinh" require />
-      </mat-form-field>
-      <mat-form-field class="form-header">
-        <mat-label>Mã phòng</mat-label>
-        <input matInput placeholder="" formControlName="MaPhongBan" require />
-      </mat-form-field>
-      <mat-form-field class="form-header">
-        <mat-label>Mã chức vụ</mat-label>
-        <input matInput placeholder="" formControlName="MaChucVu" require />
-      </mat-form-field>
-      <mat-form-field class="form-header">
-        <mat-label>Hệ số lương</mat-label>
-        <input matInput placeholder="" formControlName="HeSoLuong" require />
-      </mat-form-field>
-      <br />
+  <h1>Nhập thêm 1 nhân viên mới</h1>
+  <form [formGroup]="nhanvienForm">
+    <mat-label>ID</mat-label>
+    <input formControlName="ID" type="text" [value]="nhanvienForm.get('ID')?.value" required> <br>
+    <mat-label>Họ tên</mat-label>
+    <input formControlName="HoTen" type="text" [value]="nhanvienForm.get('HoTen')?.value" required> <br>
+    <mat-label>Giới tính</mat-label>
+    <input formControlName="GioiTinh" type="text" [value]="nhanvienForm.get('GioiTinh')?.value" required> <br>
+    <mat-label>Ngày tháng năm sinh</mat-label>
+    <input formControlName="NgaySinh" type="date" [value]="nhanvienForm.get('NgaySinh')?.value" required> <br>
+    <mat-label>Mã phòng</mat-label>
+    <input formControlName="MaPhongBan" type="text" [value]="nhanvienForm.get('MaPhongBan')?.value" required> <br>
+    <mat-label>Mã chức vụ</mat-label>
+    <input formControlName="MaChucVu" type="text" [value]="nhanvienForm.get('MaChucVu')?.value" required> <br>
+    <mat-label>Hệ số lương</mat-label>
+    <input formControlName="HeSoLuong" type="text" [value]="nhanvienForm.get('HeSoLuong')?.value" required> <br>
+  </form>
+  
+  
       <button
         type="submit"
         class="btn btn-success"
@@ -47,5 +35,5 @@
       >
         Lưu <span *ngIf="id === 0">và nhập mới</span>
       </button>
-    </form>
+
   </div>

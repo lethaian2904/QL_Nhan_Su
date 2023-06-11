@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NhanViens } from '../model/nhanviens';
 import { UserService } from '../service/user.service';
 import { ServerHttpService } from '../service/server-http.service';
 import { ActivatedRoute, Router} from '@angular/router';
-import { NhanvienFormComponent } from '../nhanvien-form/nhanvien-form.component';
 import * as _ from 'lodash';
-
 
 @Component({
   selector: 'app-nhanvien',
@@ -13,16 +11,15 @@ import * as _ from 'lodash';
   styleUrls: ['./nhanvien.component.css']
 })
 
-export class NhanvienComponent {
+export class NhanvienComponent implements OnInit {
   public nhanviens: NhanViens[] = [];
-  // user: any;
-
   
   constructor(
       private user: UserService,
       private serverhttpservice: ServerHttpService,
       private router: Router,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+
   ) {}
   
 
@@ -33,31 +30,33 @@ export class NhanvienComponent {
     };
 
     private loadData() {
-      this.serverhttpservice.getNhanviens().subscribe((data) => {
-        console.log('getNhanviens', data);
-        this.nhanviens = data;
-        this.user.setTotalNhanviens(data.length);
-    });
+      this.serverhttpservice.getNhanviens().subscribe(
+        (data) => {
+          this.nhanviens = data;
+          console.log(this.nhanviens);
+          this.user.setTotalNhanviens(data.length);
+        },
+        (error) => {
+          console.error('Error retrieving data:', error);
+        }
+      );
     }
+    
+
     public addNhanvien(){
-      this.router.navigate(['add', 0]);
-    }
-    public deleteNhanvien(nhanvienID: number) {
-      this.serverhttpservice.deleteNhanVien(nhanvienID).subscribe((data) => {
-        console.log('home', data);
-        this.loadData();
-      })
-    }
-    public editNhanvien(ID: any) {
-      this.router.navigate(['add', ID]);
+      this.router.navigate(['add']);
     }
 
-    // public sortByCode(dir: string) {
-    //   if (dir === 'up') {
-    //     this.nhanviens = _.orderBy(this.nhanviens, ['code'], ['desc']);
-    //   } else {
-    //     this.nhanviens = _.orderBy(this.nhanviens, ['code'], ['asc']);
-    //   }
-    // }
-    
+    public deleteNhanvien(nhanvienID: number) {
+    this.serverhttpservice.deleteNhanVien(nhanvienID).subscribe((data) => {
+      console.log(data);
+    },
+    (error) => {
+      console.log('Error', error);
+    }
+    );
+    this.loadData();
+    }
+
+
 }

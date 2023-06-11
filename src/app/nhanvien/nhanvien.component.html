@@ -9,42 +9,35 @@
       </th>
       <th>Họ tên</th>
       <th>Ngày sinh</th>
-      <th>GioiTinh</th>
-      <th>MaPhongBan</th>
-      <th>MaChucVuNV</th>
-      <th>HeSoLuong</th>
+      <th>Giới tính</th>
+      <th>Mã Phòng Ban</th>
+      <th>Mã Chức Vụ NV</th>
+      <th>Hệ Số Lương</th>
     </tr>
     <tr *ngFor="let nhanvien of nhanviens">
       <td>
-        <mat-icon
+        <button mat-icon-button
           style="cursor: pointer;"
           title="Nhấn vào để xóa"
-          (click)="deleteNhanvien(nhanvien.ID)"
+          (click)="deleteNhanvien(nhanvien.id)"
         >
-          clear
-        </mat-icon>
+          <mat-icon>delete</mat-icon>
+        </button>
         &nbsp;
-        <mat-icon
+        <a mat-icon-button
           style="cursor: pointer;"
           title="Nhấn vào để soạn"
-          (click)="editNhanvien(nhanvien.ID)"
+          [routerLink]="['/','add']" [queryParams]="{id:nhanvien.id}"
         >
-          create
-        </mat-icon>
+          <mat-icon>create</mat-icon>
+        </a>
       </td>
-      <td>{{ nhanvien?.ID }}</td>
-      <td>{{ nhanvien?.HoTen }}</td>
-      <td>{{ nhanvien?.NgaySinh }}</td>
-      <td>{{ nhanvien?.GioiTinh }}</td>
-      <td>{{ nhanvien?.MaChucVuNV}}</td>
-      <td>{{ nhanvien?.MaPhongBan}}</td>
-      <td align="center">
-      </td>
-      <!-- <mat-icon style="cursor: pointer;" (click)="sortByCode('down')">
-        arrow_downward
-      </mat-icon>
-      <mat-icon style="cursor: pointer;" (click)="sortByCode('up')">
-        arrow_upward
-      </mat-icon> -->
+      <td>{{ nhanvien?.id }}</td>
+      <td>{{ nhanvien?.Hoten }}</td>
+      <td>{{ nhanvien?.Ngaysinh }}</td>
+      <td>{{ nhanvien?.Gioitinh }}</td>
+      <td>{{ nhanvien?.MachucVuNV}}</td>
+      <td>{{ nhanvien?.MaphongBan}}</td>
+      <td>{{ nhanvien?.HesoLuong}}</td>
     </tr>
   </table>

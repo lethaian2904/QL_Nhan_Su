@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHandler, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { NhanViens } from '../model/nhanviens';
@@ -8,6 +8,9 @@ import { NhanViens } from '../model/nhanviens';
   providedIn: 'root'
 })
 export class ServerHttpService {
+  createEmployee(nhanviens: any) {
+    throw new Error('Method not implemented.');
+  }
   
   private httpOptions = {
     headers: new HttpHeaders({
@@ -19,59 +22,54 @@ private REST_API_SERVER = 'http://localhost:3000';
 
   constructor(private httpClient: HttpClient) { }
 
-  public getNhanviens(): Observable<any> {
+  public getNhanviens(){
     const url = `${this.REST_API_SERVER}/nhanviens`;
     return this.httpClient
     .get<any>(url, this.httpOptions)
-    .pipe(catchError(this.handleError))
+    // .pipe(catchError(this.handleError))
   }
 
-  public getNhanvien(nhanvienID: number): Observable<any> {
-    const url = `${this.REST_API_SERVER}/nhanviens/` + nhanvienID;
+  public getNhanvien(id: number): Observable<any> {
+    const url = `${this.REST_API_SERVER}/nhanviens/` + id;
     return this.httpClient
-    .get<any>(url, this.httpOptions)
-    .pipe(catchError(this.handleError));
+    .get<any>(url, this.httpOptions);
   }
 
-  public getRamdomNhanvien(): void | Observable<any> {
-    const url = `http://randomuser.me/api/?results=1`;
-    return this.httpClient
-    .get<any>(url, this.httpOptions)
-    .pipe(catchError(this.handleError));
-  }
-
-  public addNhanvien(data: NhanViens) {
+ public createNewData(data: NhanViens): Observable<any> {
     const url = `${this.REST_API_SERVER}/nhanviens`;
+    console.log(url);
+    return this.httpClient.post<any>(url, data);
+  } 
+
+  public addNhanvien(data: NhanViens): Observable<any> {
+    const url = `${this.REST_API_SERVER}/nhanviens`;
+    console.log(url);
     return this.httpClient
     .post<any>(url, data, this.httpOptions)
-    .pipe(catchError(this.handleError));
+    // .pipe(catchError(this.handleError));
   }
   
-  public deleteNhanVien(nhanvienID: number) {
-    const url = `${this.REST_API_SERVER}/profile`;
-    return this.httpClient
-    .get<any>(url, this.httpOptions)
-    .pipe(catchError(this.handleError));
+  public deleteNhanVien(nhanvienID: number): Observable<any> {
+    const url = `${this.REST_API_SERVER}/nhanviens/${nhanvienID}`;
+    console.log(url);
+    return this.httpClient.delete(url);
   }
 
-
-  public getProfile() {
-      const url = `${this.REST_API_SERVER}/profile`;
-      return this.httpClient
-      .get<any>(url, this.httpOptions)
-      .pipe(catchError(this.handleError))
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      console.error('An error occurred:', error.error.message);
-    } else {
-      console.error(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
-      );
-    }
-    return throwError('Something bad happened; please try again later.');
-  }
+  // private handleError(error: HttpErrorResponse) {
+  //   if (error.error instanceof ErrorEvent) {
+  //     // Xử lý lỗi từ phía khách hàng (ErrorEvent)
+  //     console.error('An error occurred:', error.error.message);
+  //   } else if (error.status >= 400 && error.status < 500) {
+  //     // Xử lý lỗi từ phía máy chủ (HTTP Error Response)
+  //     console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
+  //     // Cung cấp thông báo lỗi phù hợp hoặc thực hiện các hành động khác
+  //   } else {
+  //     // Xử lý các lỗi không xác định
+  //     console.error('An unknown error occurred:', error);
+  //     // Trả về đối tượng lỗi tùy chỉnh hoặc chuỗi thông báo lỗi cụ thể
+  //   }
+  //   return throwError('Something bad happened; please try again later.');
+  // }
   
 
 }
