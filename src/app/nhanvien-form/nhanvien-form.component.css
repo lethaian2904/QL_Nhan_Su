@@ -28,14 +28,11 @@
   mat-label {
     text-align: left;
   }
-<<<<<<< HEAD
   input {
     /* display: flex; */
     text-align: left;
   }
-=======
-  
->>>>>>> 2dba2699e79cc0083eabf33e42724ee4d7f7963c
+
   .error {
     font-size: 14px;
     color: red;
