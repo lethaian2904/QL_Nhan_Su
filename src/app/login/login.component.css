@@ -9,12 +9,14 @@
 }
 
 .login-form {
+    font-size: medium;
     border: 1px solid black;
     border-radius: 7px;
     width: max-content;
     padding: 20px;
     text-align: center;
     position: relative;
+    
 }
 
 .login-group {
