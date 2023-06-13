@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormControlName } from '@angular/forms';
+import { FormGroup, FormControl, FormControlName, Validators } from '@angular/forms';
 import { NhanViens } from '../model/nhanviens';
 import { UserService } from '../service/user.service';
 import { ServerHttpService } from '../service/server-http.service';
@@ -14,13 +14,13 @@ export class NhanvienFormComponent implements OnInit  {
   public nhanviens: NhanViens[] = [];
   public id =0;
   public nhanvienForm = new FormGroup({
-    ID: new FormControl(''),
-    HoTen: new FormControl(''),
-    NgaySinh: new FormControl(''),
-    GioiTinh: new FormControl(''),
-    MaChucVu: new FormControl(''),
-    MaPhongBan: new FormControl(''),
-    HeSoLuong: new FormControl('')
+    ID: new FormControl('', Validators.required),
+    HoTen: new FormControl('', Validators.required),
+    NgaySinh: new FormControl('', Validators.required),
+    GioiTinh: new FormControl('', Validators.required),
+    MaChucVu: new FormControl('', Validators.required),
+    MaPhongBan: new FormControl('', Validators.required),
+    HeSoLuong: new FormControl('', Validators.required)
   });
     
   constructor(

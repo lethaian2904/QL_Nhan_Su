@@ -1,23 +1,68 @@
 <div class="container">
   <h1>Nhập thêm 1 nhân viên mới</h1>
-  <form [formGroup]="nhanvienForm">
-    <mat-label>ID</mat-label>
-    <input formControlName="ID" type="text" [value]="nhanvienForm.get('ID')?.value" required> <br>
-    <mat-label>Họ tên</mat-label>
-    <input formControlName="HoTen" type="text" [value]="nhanvienForm.get('HoTen')?.value" required> <br>
-    <mat-label>Giới tính</mat-label>
-    <input formControlName="GioiTinh" type="text" [value]="nhanvienForm.get('GioiTinh')?.value" required> <br>
-    <mat-label>Ngày tháng năm sinh</mat-label>
-    <input formControlName="NgaySinh" type="date" [value]="nhanvienForm.get('NgaySinh')?.value" required> <br>
-    <mat-label>Mã phòng</mat-label>
-    <input formControlName="MaPhongBan" type="text" [value]="nhanvienForm.get('MaPhongBan')?.value" required> <br>
-    <mat-label>Mã chức vụ</mat-label>
-    <input formControlName="MaChucVu" type="text" [value]="nhanvienForm.get('MaChucVu')?.value" required> <br>
-    <mat-label>Hệ số lương</mat-label>
-    <input formControlName="HeSoLuong" type="text" [value]="nhanvienForm.get('HeSoLuong')?.value" required> <br>
+  <form class="add-form" [formGroup]="nhanvienForm">
+    <mat-label>ID:</mat-label>
+      <input formControlName="ID" type="text" >
+      <div class="error" *ngIf="nhanvienForm.touched || nhanvienForm.dirty">
+        <ng-container *ngIf="nhanvienForm.get('ID')?.errors && nhanvienForm.get('ID')?.errors?.['required']">
+            Vui lòng nhập thông tin
+        </ng-container>
+    </div>
+      <br>
+    <mat-label>Họ tên:</mat-label>
+      <input formControlName="HoTen" type="text">
+      <div class="error" *ngIf="nhanvienForm.touched || nhanvienForm.dirty">
+        <ng-container *ngIf="nhanvienForm.get('HoTen')?.errors && nhanvienForm.get('HoTen')?.errors?.['required']">
+            Vui lòng nhập thông tin
+        </ng-container>
+    </div>
+      <br>
+    <mat-label>Giới tính:</mat-label>
+      <select formControlName="GioiTinh" type="text">
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+        <option value="Khác">KHÁC</option>
+      </select> 
+      <div class="error" *ngIf="nhanvienForm.touched || nhanvienForm.dirty">
+        <ng-container *ngIf="nhanvienForm.get('GioiTinh')?.errors && nhanvienForm.get('GioiTinh')?.errors?.['required']">
+            Vui lòng nhập thông tin
+        </ng-container>
+    </div>
+      <br><br>
+    <mat-label>Ngày tháng năm sinh:</mat-label>
+      <input formControlName="NgaySinh" type="date"> 
+      <div class="error" *ngIf="nhanvienForm.touched || nhanvienForm.dirty">
+        <ng-container *ngIf="nhanvienForm.get('NgaySinh')?.errors && nhanvienForm.get('NgaySinh')?.errors?.['required']">
+            Vui lòng nhập thông tin
+        </ng-container>
+    </div>
+      <br>
+    <mat-label>Mã phòng:</mat-label>
+      <input formControlName="MaPhongBan" type="text">
+      <div class="error" *ngIf="nhanvienForm.touched || nhanvienForm.dirty">
+        <ng-container *ngIf="nhanvienForm.get('MaPhongBan')?.errors && nhanvienForm.get('MaPhongBan')?.errors?.['required']">
+            Vui lòng nhập thông tin
+        </ng-container>
+    </div> 
+      <br>
+    <mat-label>Mã chức vụ:</mat-label>
+      <input formControlName="MaChucVu" type="text"> 
+      <div class="error" *ngIf="nhanvienForm.touched || nhanvienForm.dirty">
+        <ng-container *ngIf="nhanvienForm.get('MaChucVu')?.errors && nhanvienForm.get('MaChucVu')?.errors?.['required']">
+            Vui lòng nhập thông tin
+        </ng-container>
+    </div>
+      <br>
+    <mat-label>Hệ số lương:</mat-label>
+      <input formControlName="HeSoLuong" type="text"> 
+      <div class="error" *ngIf="nhanvienForm.touched || nhanvienForm.dirty">
+        <ng-container *ngIf="nhanvienForm.get('HeSoLuong')?.errors && nhanvienForm.get('HeSoLuong')?.errors?.['required']">
+            Vui lòng nhập thông tin
+        </ng-container>
+    </div>
+      <br>
   </form>
-  
-  
+
       <button
         type="submit"
         class="btn btn-success"

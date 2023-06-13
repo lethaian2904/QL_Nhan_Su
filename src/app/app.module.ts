@@ -22,6 +22,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { trigger,state,style,transition,animate } from '@angular/animations';
+import { ServerHttpService } from './service/server-http.service';
 
 
 
@@ -52,7 +53,7 @@ import { trigger,state,style,transition,animate } from '@angular/animations';
     
 
   ],
-  providers: [],
+  providers: [ServerHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

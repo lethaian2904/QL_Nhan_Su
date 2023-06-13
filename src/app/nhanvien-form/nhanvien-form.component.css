@@ -4,3 +4,37 @@
   .form-header {
     width: 80%;
   }
+  .form-class {
+    align-items: center;
+    justify-content: center;
+   
+  }
+  #customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers form {
+    border: 1px solid #000000;
+    padding: 8px;
+  }
+
+  form {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    /* text-align: center; */
+  }
+  mat-label {
+    text-align: left;
+  }
+  input {
+    /* display: flex; */
+    text-align: center;
+  }
+  .error {
+    font-size: 14px;
+    color: red;
+    margin-top: 5px;
+}
+  

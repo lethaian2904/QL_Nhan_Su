@@ -1,9 +1,10 @@
 .container {   
     height: 50vh;
     display: flex;
-    padding: 10px;
+    padding: 20px;
     margin: 5px;
-    
+    align-items: center;
+    justify-content: center;
    
 }
 
