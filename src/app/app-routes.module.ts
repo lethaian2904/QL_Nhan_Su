@@ -11,10 +11,11 @@ const appRouters: Routes= [
   {path : '', component:LoginComponent},
   {path : 'login', component: LoginComponent},
   {path : 'home', component: NhanvienComponent, canActivate:[AuthGuard] },
-  {path : 'nhanvien/:ID', component: NhanvienComponent,},
+  {path : 'home/:ID', component: NhanvienComponent,},
   {path : 'add/:ID', component: NhanvienFormComponent, },
   {path : 'add', component: NhanvienFormComponent },
   {path: '',redirectTo:'login',pathMatch:'full'},
+  {path : '*', component:LoginComponent},
 
 ]
 

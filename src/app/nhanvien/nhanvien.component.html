@@ -8,7 +8,7 @@
         Mã nhân viên
       </th>
       <th>Họ tên</th>
-      <th>Ngày sinh</th>
+      <th>Ngày sinh (yyyy-MM-dd)</th>
       <th>Giới tính</th>
       <th>Mã Phòng Ban</th>
       <th>Mã Chức Vụ NV</th>
@@ -34,7 +34,7 @@
       </td>
       <td>{{ nhanvien?.id }}</td>
       <td>{{ nhanvien?.Hoten }}</td>
-      <td>{{ nhanvien?.Ngaysinh }}</td>
+      <td>{{ nhanvien?.Ngaysinh | date:'yyyy-MM-dd' }}</td>
       <td>{{ nhanvien?.Gioitinh }}</td>
       <td>{{ nhanvien?.MachucVuNV}}</td>
       <td>{{ nhanvien?.MaphongBan}}</td>

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container"><br>
   <h1>Nhập thêm 1 nhân viên mới</h1>
   <form class="add-form" [formGroup]="nhanvienForm">
     <mat-label>ID:</mat-label>
@@ -16,7 +16,7 @@
             Vui lòng nhập thông tin
         </ng-container>
     </div>
-      <br>
+      <br><br>
     <mat-label>Giới tính:</mat-label>
       <select formControlName="GioiTinh" type="text">
         <option value="Nam">Nam</option>
@@ -29,14 +29,14 @@
         </ng-container>
     </div>
       <br><br>
-    <mat-label>Ngày tháng năm sinh:</mat-label>
+    <mat-label>Ngày sinh:</mat-label>
       <input formControlName="NgaySinh" type="date"> 
       <div class="error" *ngIf="nhanvienForm.touched || nhanvienForm.dirty">
         <ng-container *ngIf="nhanvienForm.get('NgaySinh')?.errors && nhanvienForm.get('NgaySinh')?.errors?.['required']">
             Vui lòng nhập thông tin
         </ng-container>
     </div>
-      <br>
+      <br><br>
     <mat-label>Mã phòng:</mat-label>
       <input formControlName="MaPhongBan" type="text">
       <div class="error" *ngIf="nhanvienForm.touched || nhanvienForm.dirty">

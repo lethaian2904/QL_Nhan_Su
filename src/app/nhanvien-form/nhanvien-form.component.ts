@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormControlName, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NhanViens } from '../model/nhanviens';
 import { UserService } from '../service/user.service';
 import { ServerHttpService } from '../service/server-http.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-nhanvien-form',
@@ -49,7 +50,7 @@ export class NhanvienFormComponent implements OnInit  {
 
         ID: data.id,
         HoTen: data.Hoten,
-        NgaySinh: data.NgaySinh,
+        NgaySinh: formatDate(data.Ngaysinh, 'yyyy-MM-dd', 'en-US'),
         GioiTinh: data.Gioitinh,
         MaPhongBan: data.MaphongBan,
         MaChucVu: data.MachucVuNV,
@@ -125,10 +126,10 @@ export class NhanvienFormComponent implements OnInit  {
       });
     }
   }
-
-}
-
-function subscribe(arg0: (data: any) => void) {
+public subscribe(arg0: (data: any) => void) {
   throw new Error('Function not implemented.');
 }
+}
+
+
 

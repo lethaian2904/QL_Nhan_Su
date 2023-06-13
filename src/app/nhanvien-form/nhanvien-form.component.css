@@ -28,13 +28,18 @@
   mat-label {
     text-align: left;
   }
+<<<<<<< HEAD
   input {
     /* display: flex; */
-    text-align: center;
+    text-align: left;
   }
+=======
+  
+>>>>>>> 2dba2699e79cc0083eabf33e42724ee4d7f7963c
   .error {
     font-size: 14px;
     color: red;
     margin-top: 5px;
 }
+input[type=text] {  width: 100%;  padding: 12px 20px;  margin: 8px 0;  box-sizing: border-box;}
   
