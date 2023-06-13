@@ -24,12 +24,12 @@
           <mat-icon>delete</mat-icon>
         </button>
         &nbsp;
-        <a mat-icon-button
+        <a mat-icon-button 
           style="cursor: pointer;"
           title="Nhấn vào để soạn"
-          [routerLink]="['/','add']" [queryParams]="{id:nhanvien.id}"
+          [routerLink]="['/','add']" [queryParams]="{id: nhanvien.id}"
         >
-          <mat-icon>create</mat-icon>
+          <mat-icon>edit</mat-icon>
         </a>
       </td>
       <td>{{ nhanvien?.id }}</td>

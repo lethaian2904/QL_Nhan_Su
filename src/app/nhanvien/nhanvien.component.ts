@@ -13,7 +13,7 @@ import * as _ from 'lodash';
 
 export class NhanvienComponent implements OnInit {
   public nhanviens: NhanViens[] = [];
-  
+  public id = 0;
   constructor(
       private user: UserService,
       private serverhttpservice: ServerHttpService,
@@ -59,4 +59,5 @@ export class NhanvienComponent implements OnInit {
     }
 
 
-}
+  }
+
